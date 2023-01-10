@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<bean id="learner" class="org.snva.hws.model.Role">
+        <property name="roleId" value="1"/>
+        <property name="roleName" value="learner"/>
+        <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
+    </bean>
+    <bean id="admin" class="org.snva.hws.model.Role">
+        <property name="roleId" value="2"/>
+        <property name="roleName" value="admin"/>
+        <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
+    </bean>
+    <bean id="architect" class="org.snva.hws.model.Role">
+        <property name="roleId" value="3"/>
+        <property name="roleName" value="architect"/>
+        <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
+    </bean>
+
+
+    <util:list id="rolesString" value-type="java.lang.Integer">
+        <value> 1  </value>
+        <value> 2  </value>
+        <value> 3  </value>
+    </util:list>
+
+<!--    <util:list id="roles" value-type="org.snva.hws.model.Role">-->
+<!--        <value > Admin  </value>-->
+<!--        <value> Learner  </value>-->
+<!--        <value> Architect  </value>-->
+<!--    </util:list>-->
+
+    <bean id="dheeraj" class="org.snva.hws.model.User">
+        <property name="userId" value="1"/>
+        <property name="userName" value="Dheerajthedev"/>
+        <property name="firstName" value="Dheeraj"/>
+        <property name="lastName" value="Singh"/>
+        <property name="email" value="dheeraj@careerera.com"/>
+        <property name="password" value="123"/>
+        <property name="contact" value="+1 111 11111"/>
+        <property name="roles" >
+            <list value-type="org.snva.hws.model.Role">
+                <ref bean="learner" />
+                <ref bean="architect" />
+                <ref bean="admin" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="alex" class="org.snva.hws.model.User">
+        <property name="userId" value="2"/>
+        <property name="userName" value="alexthedev"/>
+        <property name="firstName" value="Alex"/>
+        <property name="lastName" value="Singh"/>
+        <property name="email" value="alex@careerera.com"/>
+        <property name="password" value="123"/>
+        <property name="contact" value="+1 333 11111"/>
+        <property name="roles" >
+            <list value-type="org.snva.hws.model.Role">
+                <ref bean="architect" />
+                <ref bean="admin" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="viet" class="org.snva.hws.model.User">
+        <property name="userId" value="3"/>
+        <property name="userName" value="Vietthedev"/>
+        <property name="firstName" value="Viet"/>
+        <property name="lastName" value="Singh"/>
+        <property name="email" value="viet@careerera.com"/>
+        <property name="password" value="123"/>
+        <property name="contact" value="+1 222 11111"/>
+        <property name="roles" >
+            <list value-type="org.snva.hws.model.Role">
+                <ref bean="architect" />
+            </list>
+        </property>
+    </bean>
+
+
+<!--    <util:list id="users" value-type="org.snva.hws.model.User">-->
+<!--        <value type="org.snva.hws.model.User">-->
+<!--        </value>-->
+<!--    </util:list>-->
+
+    <bean id="users" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="dheeraj"></ref>
+                <ref bean="alex"></ref>
+                <ref bean="viet"></ref>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+
+</beans>
