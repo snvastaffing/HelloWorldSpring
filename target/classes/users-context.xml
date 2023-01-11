@@ -5,28 +5,28 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-<bean id="learner" class="org.snva.hws.model.Role">
+    <bean id="learner" class="org.snva.hws.model.Role"  >
         <property name="roleId" value="1"/>
         <property name="roleName" value="learner"/>
         <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
     </bean>
-    <bean id="admin" class="org.snva.hws.model.Role">
+    <bean id="admin" class="org.snva.hws.model.Role"  >
         <property name="roleId" value="2"/>
         <property name="roleName" value="admin"/>
         <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
     </bean>
-    <bean id="architect" class="org.snva.hws.model.Role">
+    <bean id="architect" class="org.snva.hws.model.Role" >
         <property name="roleId" value="3"/>
         <property name="roleName" value="architect"/>
         <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
     </bean>
 
 
-    <util:list id="rolesString" value-type="java.lang.Integer">
-        <value> 1  </value>
-        <value> 2  </value>
-        <value> 3  </value>
-    </util:list>
+<!--    <util:list id="rolesString" value-type="java.lang.Integer">-->
+<!--        <value> 1  </value>-->
+<!--        <value> 2  </value>-->
+<!--        <value> 3  </value>-->
+<!--    </util:list>-->
 
 <!--    <util:list id="roles" value-type="org.snva.hws.model.Role">-->
 <!--        <value > Admin  </value>-->
@@ -34,7 +34,9 @@
 <!--        <value> Architect  </value>-->
 <!--    </util:list>-->
 
-    <bean id="dheeraj" class="org.snva.hws.model.User">
+
+    <bean id="dateTimeSingleTon" scope="singleton" class="org.snva.hws.model.SingletonDemo"></bean>
+    <bean id="dheeraj"  scope="singleton|prototype"  lazy-init="true" class="org.snva.hws.model.User" init-method="init" destroy-method="destroy">
         <property name="userId" value="1"/>
         <property name="userName" value="Dheerajthedev"/>
         <property name="firstName" value="Dheeraj"/>
@@ -51,7 +53,7 @@
         </property>
     </bean>
 
-    <bean id="alex" class="org.snva.hws.model.User">
+    <bean id="alex" class="org.snva.hws.model.User" init-method="init" destroy-method="destroy">
         <property name="userId" value="2"/>
         <property name="userName" value="alexthedev"/>
         <property name="firstName" value="Alex"/>
@@ -66,8 +68,23 @@
             </list>
         </property>
     </bean>
+    <bean name="roles" id="roles" class="java.lang.ArrayList" autowire="byName">
+        <constructor-arg>
+            <list>
+                <ref bean="learner"></ref>
+                <ref bean="admin"></ref>
+                <ref bean="architect"></ref>
+            </list>
+        </constructor-arg>
+    </bean>
 
-    <bean id="viet" class="org.snva.hws.model.User">
+    <bean id="extra" name="extrta" class="java.lang.String" >
+        <constructor-arg>
+            <value>Extra</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="viet" class="org.snva.hws.model.User" autowire="byName">
         <property name="userId" value="3"/>
         <property name="userName" value="Vietthedev"/>
         <property name="firstName" value="Viet"/>
@@ -77,10 +94,13 @@
         <property name="contact" value="+1 222 11111"/>
         <property name="roles" >
             <list value-type="org.snva.hws.model.Role">
-                <ref bean="architect" />
+                <ref bean="admin" />
             </list>
         </property>
     </bean>
+
+
+
 
 
 <!--    <util:list id="users" value-type="org.snva.hws.model.User">-->
@@ -88,15 +108,15 @@
 <!--        </value>-->
 <!--    </util:list>-->
 
-    <bean id="users" class="java.util.ArrayList">
-        <constructor-arg>
-            <list>
-                <ref bean="dheeraj"></ref>
-                <ref bean="alex"></ref>
-                <ref bean="viet"></ref>
-            </list>
-        </constructor-arg>
-    </bean>
+<!--    <bean id="users" class="java.util.ArrayList">-->
+<!--        <constructor-arg>-->
+<!--            <list>-->
+<!--                <ref bean="dheeraj"></ref>-->
+<!--                <ref bean="alex"></ref>-->
+<!--                <ref bean="viet"></ref>-->
+<!--            </list>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
 
 
 

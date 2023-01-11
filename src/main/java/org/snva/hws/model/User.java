@@ -1,5 +1,9 @@
 package org.snva.hws.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -21,12 +25,18 @@ public class User {
     // datas
     private Long userId;
     private String userName;
+
+    @Autowired
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private String contact;
-    List<Role> roles;
+
+
+    @Autowired
+    Role roles;
+
 
 
     // behaviors
@@ -87,13 +97,22 @@ public class User {
         this.contact = contact;
     }
 
-    public List<Role> getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 
+
+
+    @PostConstruct
+    public void init(){
+        System.out.println("User has been initialized ");
+    }
+    public void  destroy(){
+        System.out.println("User "+ this.userName +"has been destroyed");
+    }
 }
 

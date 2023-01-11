@@ -1,18 +1,32 @@
 package org.snva.hws;
 import org.snva.hws.config.UsersConfig;
+import org.snva.hws.model.SingletonDemo;
 import org.snva.hws.model.User;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
 public class SpringRunner {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext  applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.register(UsersConfig.class);
-        applicationContext.refresh();
-//        User dheeraj =(User) applicationContext.getBean("dheeraj");
-       List<User> users =(List<User>) applicationContext.getBean("users");
-        users.forEach(x->System.out.println(x));
+        //AnnotationConfigApplicationContext  applicationContext = new AnnotationConfigApplicationContext();
+        //applicationContext.register(UsersConfig.class);
+        //applicationContext.refresh();
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("auto-context.xml");
+                User alexAdmin
+                        =(User) applicationContext.getBean("viet");
+
+        String name
+                =(String) applicationContext.getBean("firstName");
+//        User alexLearner
+//                =(User) applicationContext.getBean("learnerUser");
+//                System.out.println(alexLearner);
+        System.out.println(name);
+                System.out.println(alexAdmin);
+applicationContext.close();
+                //List<User> users =(List<User>) applicationContext.getBean("users");
+
     }
 }
 

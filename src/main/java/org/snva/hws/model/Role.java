@@ -1,6 +1,17 @@
 package org.snva.hws.model;
 
-public class Role {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+
+// XML Init and Destroy init-init-method destroy-destory properties
+// JavaCode- two interfaces {InitializingBean , DisposableBean }
+// Annotation Post Construct and  PreDestroy annotations
+
+public class Role implements  DisposableBean, InitializingBean {
     @Override
     public String toString() {
         return "Role{" +
@@ -41,5 +52,22 @@ public class Role {
         this.roleDescription = roleDescription;
     }
 
+//
+//    public  void init(){
+//        System.out.println("Role has been initialized");
+//    }
 
+
+    @PreDestroy
+    public  void destroy(){
+        System.out.println(this.roleName + " with "+this.roleId+" Role has been destroyed");
+    }
+
+
+    // added it for demo 2
+
+   @PostConstruct
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Role has been initialized");
+    }
 }

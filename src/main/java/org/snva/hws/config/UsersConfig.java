@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 
 public class UsersConfig {
 
-    public List<Role> getRolesDheeraj() {
-        List<Role> roles = new ArrayList<>();
+
+    /*
+
+    public ArrayList<Role> getRolesDheeraj() {
+        ArrayList<Role> roles = new ArrayList<>();
         Role admin = new Role();
         admin.setRoleName("admin");
         admin.setRoleDescription("Role for an admin ");
@@ -81,8 +84,9 @@ public class UsersConfig {
         return  allUsers;
     }
 
-    private List<Role> getRoles(String rolesString) {
-        List<Role> roles = new ArrayList<>();
+    @Bean(name = "roles")
+    private ArrayList<Role> getRoles(String rolesString) {
+        ArrayList<Role> roles = new ArrayList<>();
         rolesString= rolesString.replace('\r',' ');
         rolesString= rolesString.trim();
         String[] rolesArr= rolesString.split("-");
@@ -99,4 +103,7 @@ public class UsersConfig {
         }
         return  roles;
     }
+
+    */
+
 }

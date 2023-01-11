@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="roles" name="roles" class="org.snva.hws.model.Role"  >
+        <property name="roleId" value="1"/>
+        <property name="roleName" value="learner"/>
+        <property name="roleDescription" value="this is a learner role he can see ,,,,,,"/>
+    </bean>
+
+    <bean id="firstName" name="firstName" class="java.lang.String"  >
+        <constructor-arg>
+            <value>Some Name</value>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="viet" class="org.snva.hws.model.User" autowire="byName" >
+        <property name="userId" value="3"/>
+        <property name="userName" value="Vietthedev"/>
+        <property name="lastName" value="Singh"/>
+        <property name="email" value="viet@careerera.com"/>
+        <property name="password" value="123"/>
+        <property name="contact" value="+1 222 11111"/>
+<!--        <property name="roles" ref="roles"/>-->
+    </bean>
+
+</beans>
